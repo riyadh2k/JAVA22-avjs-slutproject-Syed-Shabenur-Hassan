@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "../css/ShoppingCart.css";
 import { getCart, updateCart, updateInventory } from "./Firebase";
-import Navbar from "./Navbar";
 
 function ShoppingCart() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -14,17 +13,6 @@ function ShoppingCart() {
     getCart().then((data) => {
       setCartItems(data.items);
       setTotalPrice(data.totalPrice);
-    });
-
-    // Listen for changes to cart data in Firebase
-    const eventSource = new EventSource(
-      "https://webshop-9434b-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
-    );
-    eventSource.addEventListener("message", (event) => {
-      const cartData = JSON.parse(event.data);
-      console.log("Shopping cart updated: ", cartData);
-      setCartItems(cartData.items);
-      setTotalPrice(cartData.totalPrice);
     });
   }, []);
 
@@ -45,6 +33,7 @@ function ShoppingCart() {
         setCartItems(data.items);
         setTotalPrice(data.totalPrice);
         alert("Thank you for your purchase!");
+        navigate("/product");
       });
     });
   };
@@ -76,9 +65,7 @@ function ShoppingCart() {
         Total Item:{" "}
         {cartItems.reduce((total, item) => total + item.quantity, 0)}
       </div>
-      <div className="total price">
-        Total Price: {totalPrice.toFixed(2)} Sek
-      </div>
+      <div className="total price">Total Price: {totalPrice.toFixed(2)} Kr</div>
       <div className="cart-buttons">
         <button onClick={handlePurchase}>Purchase</button>
         <button onClick={handleEmptyCart}>Empty Cart</button>

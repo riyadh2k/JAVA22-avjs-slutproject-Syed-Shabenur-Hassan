@@ -105,22 +105,3 @@ export const updateInventory = async (productId, newInventory) => {
       console.error(error);
     });
 };
-
-// const listenForCartChanges = () => {
-//   const url = "https://webshop-9434b-default-rtdb.europe-west1.firebasedatabase.app/cart.json";
-
-//   const eventSource = new EventSource(url);
-
-//   eventSource.addEventListener("message", (event) => {
-//     const cartData = JSON.parse(event.data);
-//     console.log("Shopping cart updated: ", cartData);
-//     // Handle changes to your cart data
-//     // Update your page with the new cart data
-//   });
-
-//   eventSource.addEventListener("error", (event) => {
-//     console.error("Error with event source:", event);
-//   });
-// }
-
-// listenForCartChanges();
