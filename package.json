@@ -1,12 +1,14 @@
 {
   "name": "react-mall",
   "version": "1.0.0",
-  "homepage": "https://riyadh2k.github.io/product",
+  "homepage": "https://github.com/riyadh2k/JAVA22-avjs-slutproject-Syed-Shabenur-Hassan",
   "description": "",
   "scripts": {
     "dev": "parcel ./src/index.html",
     "clean": "del-cli ./dist ./.parcel-cache",
-    "build": "parcel build ./src/index.html --dist-dir docs --public-url ./"
+    "build": "parcel build ./src/index.html --dist-dir docs --public-url ./",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
 
   },
   "keywords": [],
@@ -14,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "del-cli": "^4.0.1",
+    "gh-pages": "^5.0.0",
     "parcel": "^2.3.2",
     "process": "^0.11.10"
   },
