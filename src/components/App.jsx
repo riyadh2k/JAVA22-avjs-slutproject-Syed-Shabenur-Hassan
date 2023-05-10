@@ -13,7 +13,7 @@ function App() {
       <Navbar numOfItemsInCart={numOfItemsInCart} />
       <Routes>
         <Route
-          path=""
+          exact path="/"
           element={<ProductPage setNumOfItemsInCart={setNumOfItemsInCart} />}
         />
         <Route
