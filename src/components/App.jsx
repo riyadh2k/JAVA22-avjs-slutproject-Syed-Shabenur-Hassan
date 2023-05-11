@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import ProductPage from "./ProductPage";
@@ -13,7 +13,8 @@ function App() {
       <Navbar numOfItemsInCart={numOfItemsInCart} />
       <Routes>
         <Route
-          exact path="/"
+          exact
+          path="*"
           element={<ProductPage setNumOfItemsInCart={setNumOfItemsInCart} />}
         />
         <Route
